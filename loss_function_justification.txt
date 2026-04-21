@@ -1,0 +1,9 @@
+Loss Function Justification
+===========================
+Binary classification uses Binary Cross-Entropy because the target is pass/fail and
+the models output probabilities in [0,1] through a sigmoid activation.
+
+Multi-class classification uses Sparse Categorical Cross-Entropy because the target
+is a single integer class index among {Fail, C, B, A}, and the models output class
+probabilities with softmax. Cross-entropy is appropriate for probabilistic
+classification and optimizes separation between true and predicted distributions.
