@@ -1,61 +1,61 @@
 model_name,task,train_time_sec,test_time_sec,param_count,accuracy,precision,recall,f1_score,roc_auc,classification_report
-LSTM,binary,42.523,0.638,36769,0.9919,0.9939,0.998,0.9959,0.991,"              precision    recall  f1-score   support
+LSTM,binary,18.488,0.423,36769,0.9919,0.9929,0.999,0.9959,0.9873,"              precision    recall  f1-score   support
 
-        Fail       0.67      0.40      0.50        10
+        Fail       0.75      0.30      0.43        10
         Pass       0.99      1.00      1.00       982
 
     accuracy                           0.99       992
-   macro avg       0.83      0.70      0.75       992
+   macro avg       0.87      0.65      0.71       992
 weighted avg       0.99      0.99      0.99       992
 "
-GRU,binary,47.351,0.606,28001,0.9919,0.9939,0.998,0.9959,0.9956,"              precision    recall  f1-score   support
+GRU,binary,25.607,0.384,28001,0.9919,0.9949,0.9969,0.9959,0.9941,"              precision    recall  f1-score   support
 
-        Fail       0.67      0.40      0.50        10
+        Fail       0.62      0.50      0.56        10
         Pass       0.99      1.00      1.00       982
 
     accuracy                           0.99       992
-   macro avg       0.83      0.70      0.75       992
+   macro avg       0.81      0.75      0.78       992
 weighted avg       0.99      0.99      0.99       992
 "
-Transformer,binary,956.084,0.239,35393,0.996,0.9959,1.0,0.998,0.9963,"              precision    recall  f1-score   support
+Transformer,binary,22.163,0.317,35393,0.995,0.9969,0.998,0.9975,0.9967,"              precision    recall  f1-score   support
 
-        Fail       1.00      0.60      0.75        10
+        Fail       0.78      0.70      0.74        10
         Pass       1.00      1.00      1.00       982
 
-    accuracy                           1.00       992
-   macro avg       1.00      0.80      0.87       992
-weighted avg       1.00      1.00      1.00       992
+    accuracy                           0.99       992
+   macro avg       0.89      0.85      0.87       992
+weighted avg       0.99      0.99      0.99       992
 "
-LSTM,multiclass,17.392,0.24,36820,0.9607,0.4806,0.4812,0.4808,0.8812,"              precision    recall  f1-score   support
+LSTM,multiclass,32.419,0.397,36820,0.9536,0.6382,0.6446,0.6407,0.8011,"              precision    recall  f1-score   support
 
-        Fail       0.00      0.00      0.00        10
-           C       0.96      0.99      0.98       732
-           B       0.96      0.93      0.95       244
+        Fail       0.64      0.70      0.67        10
+           C       0.96      0.98      0.97       732
+           B       0.96      0.89      0.93       244
+           A       0.00      0.00      0.00         6
+
+    accuracy                           0.95       992
+   macro avg       0.64      0.64      0.64       992
+weighted avg       0.95      0.95      0.95       992
+"
+GRU,multiclass,45.844,0.458,28052,0.9667,0.6499,0.6826,0.6647,0.8556,"              precision    recall  f1-score   support
+
+        Fail       0.67      0.80      0.73        10
+           C       0.97      0.98      0.98       732
+           B       0.96      0.95      0.95       244
+           A       0.00      0.00      0.00         6
+
+    accuracy                           0.97       992
+   macro avg       0.65      0.68      0.66       992
+weighted avg       0.96      0.97      0.96       992
+"
+Transformer,multiclass,32.639,0.311,35588,0.9637,0.7351,0.5768,0.6233,0.8514,"              precision    recall  f1-score   support
+
+        Fail       1.00      0.40      0.57        10
+           C       0.96      1.00      0.98       732
+           B       0.98      0.91      0.94       244
            A       0.00      0.00      0.00         6
 
     accuracy                           0.96       992
-   macro avg       0.48      0.48      0.48       992
-weighted avg       0.95      0.96      0.95       992
-"
-GRU,multiclass,21.844,0.258,28052,0.9667,0.7031,0.6819,0.6919,0.8705,"              precision    recall  f1-score   support
-
-        Fail       0.89      0.80      0.84        10
-           C       0.97      0.98      0.98       732
-           B       0.95      0.94      0.95       244
-           A       0.00      0.00      0.00         6
-
-    accuracy                           0.97       992
-   macro avg       0.70      0.68      0.69       992
-weighted avg       0.96      0.97      0.96       992
-"
-Transformer,multiclass,25.341,0.177,35588,0.9688,0.6985,0.6333,0.6602,0.8481,"              precision    recall  f1-score   support
-
-        Fail       0.86      0.60      0.71        10
-           C       0.97      0.99      0.98       732
-           B       0.97      0.94      0.95       244
-           A       0.00      0.00      0.00         6
-
-    accuracy                           0.97       992
-   macro avg       0.70      0.63      0.66       992
-weighted avg       0.96      0.97      0.97       992
+   macro avg       0.74      0.58      0.62       992
+weighted avg       0.96      0.96      0.96       992
 "
