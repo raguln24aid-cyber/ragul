@@ -215,7 +215,7 @@ def main() -> None:
         cols = st.columns(3)
         for i, fp in enumerate(figure_files):
             if os.path.exists(fp):
-                cols[i % 3].image(fp, caption=fp, use_container_width=True)
+                cols[i % 3].image(fp, caption=fp, width="stretch")
             else:
                 cols[i % 3].info(f"Missing: {fp}")
 
