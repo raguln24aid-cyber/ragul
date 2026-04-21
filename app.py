@@ -79,6 +79,20 @@ def pretty_metric(value: float) -> str:
     return f"{value:.4f}" if isinstance(value, (float, int, np.floating)) else str(value)
 
 
+def render_image_compatible(container, image_path: str, caption: str) -> None:
+    """
+    Render images across different Streamlit versions.
+    Some versions do not accept width='stretch' or use_container_width.
+    """
+    try:
+        container.image(image_path, caption=caption, use_container_width=True)
+    except TypeError:
+        try:
+            container.image(image_path, caption=caption, use_column_width=True)
+        except TypeError:
+            container.image(image_path, caption=caption)
+
+
 def main() -> None:
     st.set_page_config(page_title="Student Performance Sequential DL", page_icon="🎓", layout="wide")
     st.markdown(
@@ -115,6 +129,13 @@ def main() -> None:
         st.markdown("---")
         st.write("Run training first:")
         st.code("python student_performance_pipeline.py")
+        st.markdown("### How to use")
+        st.markdown(
+            "1. Train models and generate artifacts.\n"
+            "2. Open **Model Results** to compare metrics.\n"
+            "3. Use **Interactive Prediction** for one student.\n"
+            "4. Review **Saved Plots** for ROC/CM visuals."
+        )
 
     tab1, tab2, tab3, tab4 = st.tabs(["Dataset", "Model Results", "Interactive Prediction", "Saved Plots"])
 
@@ -215,7 +236,7 @@ def main() -> None:
         cols = st.columns(3)
         for i, fp in enumerate(figure_files):
             if os.path.exists(fp):
-                cols[i % 3].image(fp, caption=fp, width="stretch")
+                render_image_compatible(cols[i % 3], fp, fp)
             else:
                 cols[i % 3].info(f"Missing: {fp}")
 
