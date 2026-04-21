@@ -93,6 +93,11 @@ def render_image_compatible(container, image_path: str, caption: str) -> None:
             container.image(image_path, caption=caption)
 
 
+@st.cache_resource(show_spinner=False)
+def load_prediction_model(model_path: str):
+    return tf.keras.models.load_model(model_path, compile=False)
+
+
 def main() -> None:
     st.set_page_config(page_title="Student Performance Sequential DL", page_icon="🎓", layout="wide")
     st.markdown(
@@ -213,12 +218,19 @@ def main() -> None:
             if not os.path.exists(model_path):
                 st.error(f"Model file not found: {model_path}. Save model files after training.")
             else:
-                model = tf.keras.models.load_model(model_path)
-                prob = float(model.predict(x_seq, verbose=0).reshape(-1)[0])
-                pred = "Pass" if prob >= 0.5 else "Fail"
-                st.success(f"Prediction: {pred}")
-                st.progress(min(max(prob, 0.0), 1.0))
-                st.write(f"Pass Probability: **{prob:.4f}**")
+                try:
+                    model = load_prediction_model(model_path)
+                    prob = float(model.predict(x_seq, verbose=0).reshape(-1)[0])
+                    pred = "Pass" if prob >= 0.5 else "Fail"
+                    st.success(f"Prediction: {pred}")
+                    st.progress(min(max(prob, 0.0), 1.0))
+                    st.write(f"Pass Probability: **{prob:.4f}**")
+                except Exception as exc:
+                    st.error(
+                        "Model loading failed due to TensorFlow/Keras version mismatch. "
+                        "Please redeploy after updating dependencies."
+                    )
+                    st.code(str(exc))
 
     with tab4:
         st.markdown("### Generated Figures")
